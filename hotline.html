@@ -9,11 +9,17 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: #000;
+      color: #ffd700;
+      height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: #f9f9f9;
+    }
+
+    h1 {
+      margin-bottom: 40px;
     }
 
     .icons {
@@ -23,6 +29,9 @@
 
     .icons img {
       width: 70px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -34,6 +43,8 @@
 </head>
 
 <body>
+
+  <h1>Hubungi Kami</h1>
 
   <div class="icons">
     <img src="assets/whatsapp.jpg" alt="WhatsApp">
