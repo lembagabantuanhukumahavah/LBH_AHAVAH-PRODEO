@@ -73,6 +73,28 @@ button{
   font-size:18px;
 }
 
+.nav-links{
+  margin-top:30px;
+  text-align:center;
+}
+
+.nav-links a{
+  display:inline-block;
+  margin:8px;
+  padding:10px 18px;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:4px;
+  border:2px solid #000;
+  color:#000;
+  background:#fff;
+}
+
+.nav-links a.primary{
+  background:#000;
+  color:#fff;
+}
+
 footer{
   text-align:center;
   font-size:14px;
@@ -97,7 +119,7 @@ footer{
 </div>
 
 <div class="card" id="result">
-  <p>Silakan masukkan Nomor Anggota.</p>
+  <p>Silakan masukkan Nomor Anggota atau scan QR Code.</p>
 </div>
 
 <footer>
@@ -146,12 +168,27 @@ async function verifikasi(idManual = null){
           Data ini telah diverifikasi dan sesuai dengan kartu anggota resmi
           Lembaga Bantuan Hukum AHAVAH PRO DEO.
         </p>
+
+        <div class="nav-links">
+          <a href="index.html">⬅ Kembali ke Beranda</a>
+          <a href="index.html" class="primary">🌐 Website Utama</a>
+        </div>
       `;
     }else{
-      result.innerHTML = `<div class="status-invalid">DATA TIDAK TERDAFTAR</div>`;
+      result.innerHTML = `
+        <div class="status-invalid">DATA TIDAK TERDAFTAR</div>
+        <div class="nav-links">
+          <a href="index.html">⬅ Kembali ke Beranda</a>
+        </div>
+      `;
     }
   }catch(e){
-    result.innerHTML = `<div class="status-invalid">Gagal memuat data verifikasi</div>`;
+    result.innerHTML = `
+      <div class="status-invalid">Gagal memuat data verifikasi</div>
+      <div class="nav-links">
+        <a href="index.html">⬅ Kembali ke Beranda</a>
+      </div>
+    `;
     console.error(e);
   }
 }
