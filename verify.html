@@ -1,136 +1,91 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Verifikasi Anggota | AHAVAH PRO DEO</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Verifikasi Anggota | LBH AHAVAH PRO DEO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      color: #000;
-    }
+<style>
+body{
+  margin:0;
+  font-family: Helvetica, Arial, sans-serif;
+  background:#f4f4f4;
+  color:#000;
+}
 
-    header {
-      background: #FFD700;
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 4px solid #000;
-    }
+header{
+  background:#000;
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
 
-    header h2 {
-      margin: 10px 0 0;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+header img{
+  width:90px;
+  display:block;
+  margin:0 auto 10px;
+}
 
-    .logo {
-      width: 120px;
-      margin-bottom: 10px;
-    }
+.card{
+  max-width:600px;
+  background:#fff;
+  margin:50px auto;
+  padding:30px;
+  border-top:6px solid #ffd700;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
 
-    .box {
-      max-width: 420px;
-      background: #ffffff;
-      margin: 40px auto;
-      padding: 30px 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+.label{
+  font-weight:bold;
+  margin-top:15px;
+}
 
-    .valid {
-      color: #0a7a0a;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+.status{
+  color:green;
+  font-weight:bold;
+  font-size:18px;
+}
 
-    .invalid {
-      color: #b00000;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .info {
-      text-align: left;
-      margin-top: 20px;
-      font-size: 15px;
-    }
-
-    .info p {
-      margin: 8px 0;
-    }
-
-    footer {
-      background: #000;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      margin-top: 40px;
-    }
-  </style>
+footer{
+  text-align:center;
+  font-size:14px;
+  color:#555;
+  margin-top:40px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <img src="assets/logo-ahavah.jpg" class="logo" alt="Logo AHAVAH PRO DEO">
-  <h2>VERIFIKASI KEANGGOTAAN</h2>
+  <img src="assets/logo-ahavah.jpg" alt="Logo LBH AHAVAH PRO DEO">
+  <h2>Lembaga Bantuan Hukum AHAVAH PRO DEO</h2>
+  <p>Halaman Verifikasi Anggota Resmi</p>
 </header>
 
-<div class="box" id="result">
-  Memeriksa data anggota…
+<div class="card">
+  <div class="label">Nama Anggota:</div>
+  <div>—</div>
+
+  <div class="label">Lembaga:</div>
+  <div>Lembaga Bantuan Hukum AHAVAH PRO DEO</div>
+
+  <div class="label">Nomor Anggota:</div>
+  <div>—</div>
+
+  <div class="label">Status:</div>
+  <div class="status">TERDAFTAR RESMI</div>
+
+  <div class="label">Keterangan Verifikasi:</div>
+  <p>
+    Data ini telah diverifikasi dan sesuai dengan kartu anggota resmi
+    Lembaga Bantuan Hukum AHAVAH PRO DEO.
+  </p>
 </div>
 
 <footer>
-  © 2026 Lembaga Bantuan Hukum AHAVAH PRO DEO<br>
-  Kalimantan Barat – Indonesia
+  © 2026 LBH AHAVAH PRO DEO – All Rights Reserved
 </footer>
-
-<script>
-  /* ===============================
-     DATA ANGGOTA (UNTUK DEADLINE)
-     =============================== */
-  const dataAnggota = [
-    {
-      id: "AHV-001",
-      nomor_kartu: "AHV-001",
-      status: "Advokat / Relawan",
-      keterangan: "Data ini diverifikasi dan sesuai dengan kartu anggota resmi Lembaga Bantuan Hukum AHAVAH PRO DEO."
-    }
-  ];
-
-  /* ===============================
-     PROSES VERIFIKASI
-     =============================== */
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const hasil = document.getElementById("result");
-
-  const anggota = dataAnggota.find(a => a.id === id);
-
-  if (anggota) {
-    hasil.innerHTML = `
-      <div class="valid">✔ TERDAFTAR RESMI</div>
-      <div class="info">
-        <p><b>Lembaga:</b><br>Lembaga Bantuan Hukum AHAVAH PRO DEO</p>
-        <p><b>Nomor Anggota:</b><br>${anggota.nomor_kartu}</p>
-        <p><b>Status:</b><br>${anggota.status}</p>
-        <p><b>Keterangan Verifikasi:</b><br>${anggota.keterangan}</p>
-      </div>
-    `;
-  } else {
-    hasil.innerHTML = `
-      <div class="invalid">✖ TIDAK TERDAFTAR</div>
-      <p>Data anggota tidak ditemukan atau QR Code tidak valid.</p>
-    `;
-  }
-</script>
 
 </body>
 </html>
