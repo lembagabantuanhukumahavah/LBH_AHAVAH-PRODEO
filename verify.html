@@ -10,13 +10,12 @@ body{
   margin:0;
   font-family: Helvetica, Arial, sans-serif;
   background:#f4f4f4;
-  color:#000;
 }
 
 header{
   background:#000;
   color:#fff;
-  padding:20px;
+  padding:25px;
   text-align:center;
 }
 
@@ -41,10 +40,12 @@ header img{
 }
 
 .status{
-  color:green;
   font-weight:bold;
   font-size:18px;
 }
+
+.valid{ color:green; }
+.invalid{ color:red; }
 
 footer{
   text-align:center;
@@ -58,34 +59,61 @@ footer{
 <body>
 
 <header>
-  <img src="assets/logo-ahavah.jpg" alt="Logo LBH AHAVAH PRO DEO">
+  <img src="assets/logo-ahavah.jpg">
   <h2>Lembaga Bantuan Hukum AHAVAH PRO DEO</h2>
   <p>Halaman Verifikasi Anggota Resmi</p>
 </header>
 
-<div class="card">
-  <div class="label">Nama Anggota:</div>
-  <div>—</div>
-
-  <div class="label">Lembaga:</div>
-  <div>Lembaga Bantuan Hukum AHAVAH PRO DEO</div>
-
-  <div class="label">Nomor Anggota:</div>
-  <div>—</div>
-
-  <div class="label">Status:</div>
-  <div class="status">TERDAFTAR RESMI</div>
-
-  <div class="label">Keterangan Verifikasi:</div>
-  <p>
-    Data ini telah diverifikasi dan sesuai dengan kartu anggota resmi
-    Lembaga Bantuan Hukum AHAVAH PRO DEO.
-  </p>
+<div class="card" id="result">
+  <p>Memuat data verifikasi...</p>
 </div>
 
 <footer>
-  © 2026 LBH AHAVAH PRO DEO – All Rights Reserved
+  © 2026 LBH AHAVAH PRO DEO
 </footer>
+
+<script>
+// ambil parameter ID dari URL
+const params = new URLSearchParams(window.location.search);
+const memberId = params.get("id");
+
+// tampilkan jika ID tidak ada
+if(!memberId){
+  document.getElementById("result").innerHTML =
+    "<p class='invalid'><strong>ID anggota tidak ditemukan.</strong></p>";
+}else{
+  fetch("members.json")
+    .then(res => res.json())
+    .then(data => {
+      const member = data.find(m => m.id === memberId);
+
+      if(member){
+        document.getElementById("result").innerHTML = `
+          <div class="label">Nama Anggota:</div>
+          <div>${member.nama}</div>
+
+          <div class="label">Lembaga:</div>
+          <div>${member.lembaga}</div>
+
+          <div class="label">Nomor Anggota:</div>
+          <div>${member.nomor}</div>
+
+          <div class="label">Status:</div>
+          <div class="status valid">${member.status} – TERDAFTAR RESMI</div>
+
+          <div class="label">Keterangan Verifikasi:</div>
+          <p>
+            Data ini telah diverifikasi dan sesuai dengan kartu anggota resmi
+            Lembaga Bantuan Hukum AHAVAH PRO DEO.
+          </p>
+        `;
+      }else{
+        document.getElementById("result").innerHTML =
+          "<p class='invalid'><strong>DATA TIDAK TERDAFTAR</strong></p>";
+      }
+    });
+}
+</script>
 
 </body>
 </html>
