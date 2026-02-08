@@ -11,91 +11,149 @@
       font-family: Helvetica, Arial, sans-serif;
       background: #ffffff;
       color: #000;
+    }
+
+    header {
+      background: #FFD700;
+      padding: 25px 15px;
       text-align: center;
+      border-bottom: 5px solid #000;
+    }
+
+    header img {
+      width: 140px;
+      margin-bottom: 10px;
     }
 
     .marquee {
-      background: #000;
-      color: #FFD700;
-      overflow: hidden;
       white-space: nowrap;
-      padding: 12px 0;
+      overflow: hidden;
+      box-sizing: border-box;
+      font-size: 22px;
+      margin-top: 10px;
     }
 
     .marquee span {
       display: inline-block;
       padding-left: 100%;
-      animation: scroll 14s linear infinite;
-      font-size: 22px;
+      animation: marquee 15s linear infinite;
     }
 
-    @keyframes scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-100%); }
+    @keyframes marquee {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
     }
 
-    header {
-      padding: 30px 15px;
-      background: linear-gradient(#FFD700, #ffffff);
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
     }
 
-    .logo {
-      width: 190px;
-      margin: 20px auto;
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    h1 {
-      font-weight: 900;
-      font-size: 28px;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-    }
-
-    .latin {
+    .visi {
+      text-align: center;
+      font-size: 18px;
       font-weight: bold;
-      margin: 6px 0;
     }
 
-    .subtitle {
-      font-style: italic;
-      font-size: 20px;
+    .misi ul {
+      line-height: 1.8;
+    }
+
+    .ayat {
+      .old-book {
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+}
+    }
+
+    .btn {
+      display: inline-block;
+      background: #000;
+      color: #FFD700;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 30px;
     }
 
     footer {
       background: #000;
       color: #fff;
+      text-align: center;
       padding: 20px;
-      margin-top: 40px;
       font-size: 14px;
+      margin-top: 60px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- TEKS BERGERAK -->
+<header>
+  <img src="assets/logo-ahavah.jpg" alt="Logo AHAVAH PRO DEO">
+
   <div class="marquee">
-    <span><b>AHAVAH</b> <i>Legal Aid Institution</i></span>
+    <span>
+      <b>AHAVAH</b> <i>Legal Aid Institution</i> &nbsp;&nbsp;&nbsp;
+      <b>AHAVAH</b> <i>Legal Aid Institution</i>
+    </span>
   </div>
 
-  <!-- HEADER -->
-  <header>
-    <img src="assets/logo-ahavah.jpg" alt="Logo LBH AHAVAH PRO DEO" class="logo">
+  <p><b>Fiat Justitia Ruat Caelum</b></p>
+</header>
 
-    <h1>
-      LEMBAGA BANTUAN HUKUM<br>
-      AHAVAH PRO DEO
-    </h1>
+<!-- VISI -->
+<section>
+  <h2>VISI</h2>
+  <p class="visi">
+    Mewujudkan dunia yang adil, penuh kasih, dan bermartabat bagi setiap manusia tanpa diskriminasi.
+  </p>
+</section>
 
-    <div class="latin">Fiat Justitia Ruat Caelum</div>
-    <div class="subtitle">Legal Aid Institution</div>
-  </header>
+<!-- MISI -->
+<section class="misi">
+  <h2>MISI</h2>
+  <ul>
+    <li>Membela hak-hak dasar setiap manusia, khususnya mereka yang tertindas dan terpinggirkan.</li>
+    <li>Memberikan bantuan kemanusiaan secara cepat, tepat, dan berkelanjutan.</li>
+    <li>Membangun kesadaran nilai kemanusiaan: kasih, solidaritas, dan keadilan.</li>
+    <li>Mendorong perubahan sistemik melalui advokasi dan pendidikan.</li>
+    <li>Menginspirasi generasi muda dalam karya kemanusiaan.</li>
+  </ul>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Lembaga Bantuan Hukum AHAVAH PRO DEO<br>
-    Keadilan • Kasih • Martabat Manusia
-  </footer>
+  <div class="ayat old-book">
+  “Beginilah firman TUHAN semesta alam:
+  Laksanakanlah hukum dengan benar,
+  dan tunjukkanlah kasih setia serta belas kasihan
+  seorang terhadap yang lain.”  
+  <br><br>
+  <b><i>(Zakharia 7:9)</i></b>
+</div>
+  </div>
+</section>
+
+<!-- VERIFIKASI -->
+<section style="text-align:center;">
+  <a href="verify.html?id=AHV-001" class="btn">
+    VERIFIKASI KEANGGOTAAN
+  </a>
+</section>
+
+<footer>
+  © 2026 Lembaga Bantuan Hukum AHAVAH PRO DEO<br>
+  Kalimantan Barat – Indonesia
+</footer>
 
 </body>
 </html>
