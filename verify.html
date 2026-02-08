@@ -29,10 +29,27 @@ header img{
 .card{
   max-width:600px;
   background:#fff;
-  margin:50px auto;
+  margin:40px auto;
   padding:30px;
   border-top:6px solid #ffd700;
   box-shadow:0 0 10px rgba(0,0,0,0.15);
+}
+
+input{
+  width:100%;
+  padding:12px;
+  font-size:16px;
+  margin-top:10px;
+}
+
+button{
+  margin-top:15px;
+  padding:12px;
+  width:100%;
+  background:#ffd700;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .label{
@@ -73,8 +90,14 @@ footer{
   <p>Halaman Verifikasi Keanggotaan Resmi</p>
 </header>
 
+<div class="card">
+  <label><strong>Masukkan Nomor Anggota</strong></label>
+  <input type="text" id="inputId" placeholder="Contoh: AHV-001">
+  <button onclick="verifikasi()">Verifikasi</button>
+</div>
+
 <div class="card" id="result">
-  <p>Memuat data verifikasi...</p>
+  <p>Silakan masukkan Nomor Anggota.</p>
 </div>
 
 <footer>
@@ -82,55 +105,62 @@ footer{
 </footer>
 
 <script>
-// Ambil parameter ID dari URL
-const params = new URLSearchParams(window.location.search);
-const memberId = params.get("id");
-const result = document.getElementById("result");
+async function verifikasi(idManual = null){
+  const result = document.getElementById("result");
+  let memberId = idManual;
 
-if(!memberId){
-  result.innerHTML = `
-    <div class="status-invalid">ID Anggota tidak ditemukan</div>
-  `;
-}else{
-  fetch("members.json")
-    .then(response => response.json())
-    .then(data => {
-      const member = data.find(item => item.id === memberId);
+  if(!memberId){
+    memberId = document.getElementById("inputId").value.trim();
+  }
 
-      if(member){
-        result.innerHTML = `
-          <div class="label">Nama Anggota:</div>
-          <div class="value">${member.nama}</div>
+  if(!memberId){
+    result.innerHTML = `<div class="status-invalid">Nomor Anggota wajib diisi</div>`;
+    return;
+  }
 
-          <div class="label">Lembaga:</div>
-          <div class="value">${member.lembaga}</div>
+  try{
+    const response = await fetch("members.json");
+    const data = await response.json();
 
-          <div class="label">Nomor Anggota:</div>
-          <div class="value">${member.nomor}</div>
+    const member = data.find(item => item.id === memberId);
 
-          <div class="label">Status Keanggotaan:</div>
-          <div class="value"><strong>${member.status}</strong></div>
-
-          <div class="label">Status Verifikasi:</div>
-          <div class="status-valid">TERDAFTAR RESMI</div>
-
-          <div class="label">Keterangan Verifikasi:</div>
-          <p>
-            Data ini telah diverifikasi dan sesuai dengan kartu anggota resmi
-            Lembaga Bantuan Hukum AHAVAH PRO DEO.
-          </p>
-        `;
-      }else{
-        result.innerHTML = `
-          <div class="status-invalid">DATA TIDAK TERDAFTAR</div>
-        `;
-      }
-    })
-    .catch(() => {
+    if(member){
       result.innerHTML = `
-        <div class="status-invalid">Gagal memuat data verifikasi</div>
+        <div class="label">Nama Anggota:</div>
+        <div class="value">${member.nama}</div>
+
+        <div class="label">Lembaga:</div>
+        <div class="value">${member.lembaga}</div>
+
+        <div class="label">Nomor Anggota:</div>
+        <div class="value">${member.nomor}</div>
+
+        <div class="label">Status Keanggotaan:</div>
+        <div class="value"><strong>${member.status}</strong></div>
+
+        <div class="label">Status Verifikasi:</div>
+        <div class="status-valid">TERDAFTAR RESMI</div>
+
+        <div class="label">Keterangan Verifikasi:</div>
+        <p>
+          Data ini telah diverifikasi dan sesuai dengan kartu anggota resmi
+          Lembaga Bantuan Hukum AHAVAH PRO DEO.
+        </p>
       `;
-    });
+    }else{
+      result.innerHTML = `<div class="status-invalid">DATA TIDAK TERDAFTAR</div>`;
+    }
+  }catch(e){
+    result.innerHTML = `<div class="status-invalid">Gagal memuat data verifikasi</div>`;
+    console.error(e);
+  }
+}
+
+// AUTO VERIFIKASI JIKA DARI QR CODE
+const params = new URLSearchParams(window.location.search);
+const qrId = params.get("id");
+if(qrId){
+  verifikasi(qrId);
 }
 </script>
 
