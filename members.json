@@ -13,13 +13,13 @@
     "status": "Koordinator Aset",
     "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
   },
-   {
+  {
     "id": "AHV-003",
     "nama": "ADELINO AFONSO PEREIRA",
     "nomor": "AHV-003",
     "status": "Relawan",
     "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
-   },
+  },
   {
     "id": "AHV-004",
     "nama": "R. PURBA",
@@ -54,5 +54,5 @@
     "nomor": "AHV-008",
     "status": "Paralegal",
     "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
-  },
+  }
 ]
