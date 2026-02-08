@@ -5,86 +5,105 @@
   <title>LBH AHAVAH PRO DEO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       font-family: Helvetica, Arial, sans-serif;
       background: #ffffff;
-      color: #000;
+      color: #111;
     }
 
-    header {
-      background: #FFD700;
-      padding: 25px 15px;
+    /* NAVBAR */
+    nav {
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 30px;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav img {
+      height: 45px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 20px;
       text-align: center;
-      border-bottom: 5px solid #000;
+      background: linear-gradient(to bottom, #ffd700, #fff);
     }
 
-    header img {
-      width: 140px;
+    .hero h1 {
+      font-size: 42px;
       margin-bottom: 10px;
     }
 
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* TEXT RUNNING */
     .marquee {
-      white-space: nowrap;
+      background: #000;
+      color: #ffd700;
+      padding: 12px;
+      font-size: 20px;
       overflow: hidden;
-      box-sizing: border-box;
-      font-size: 22px;
-      margin-top: 10px;
+      white-space: nowrap;
     }
 
     .marquee span {
       display: inline-block;
       padding-left: 100%;
-      animation: marquee 15s linear infinite;
+      animation: run 15s linear infinite;
     }
 
-    @keyframes marquee {
-      0%   { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
+    @keyframes run {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
     }
 
-    section {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 0 20px;
+    /* SECTION */
+    .section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .visi {
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .misi ul {
-      line-height: 1.8;
-    }
-
-    .ayat {
-      .old-book {
-  font-family: "Times New Roman", Georgia, serif;
-  font-size: 18px;
-  font-style: italic;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  line-height: 1.8;
-}
-    }
-
-    .btn {
-      display: inline-block;
-      background: #000;
-      color: #FFD700;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      margin-top: 30px;
+    .section h2 {
+      color: #000;
+      border-left: 6px solid #ffd700;
+      padding-left: 10px;
     }
 
     footer {
@@ -92,68 +111,60 @@
       color: #fff;
       text-align: center;
       padding: 20px;
+      margin-top: 50px;
       font-size: 14px;
-      margin-top: 60px;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <img src="assets/logo-ahavah.jpg" alt="Logo AHAVAH PRO DEO">
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <img src="assets/logo-ahavah.jpg" alt="Logo AHAVAH">
+      <strong>LBH AHAVAH PRO DEO</strong>
+    </div>
+    <ul>
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="profile.html">Profil</a></li>
+      <li><a href="visi-misi.html">Visi & Misi</a></li>
+      <li><a href="hotline.html">Hotline</a></li>
+      <li><a href="dokumentasi.html">Dokumentasi</a></li>
+      <li><a href="verify.html">Verifikasi</a></li>
+    </ul>
+  </nav>
 
+  <!-- RUNNING TEXT -->
   <div class="marquee">
     <span>
-      <b>AHAVAH</b> <i>Legal Aid Institution</i> &nbsp;&nbsp;&nbsp;
-      <b>AHAVAH</b> <i>Legal Aid Institution</i>
+      <b>AHAVAH</b> <i>Legal Aid Institution</i> — Membela Keadilan, Melayani Dengan Kasih
     </span>
   </div>
 
-  <p><b>Fiat Justitia Ruat Caelum</b></p>
-</header>
-
-<!-- VISI -->
-<section>
-  <h2>VISI</h2>
-  <p class="visi">
-    Mewujudkan dunia yang adil, penuh kasih, dan bermartabat bagi setiap manusia tanpa diskriminasi.
-  </p>
-</section>
-
-<!-- MISI -->
-<section class="misi">
-  <h2>MISI</h2>
-  <ul>
-    <li>Membela hak-hak dasar setiap manusia, khususnya mereka yang tertindas dan terpinggirkan.</li>
-    <li>Memberikan bantuan kemanusiaan secara cepat, tepat, dan berkelanjutan.</li>
-    <li>Membangun kesadaran nilai kemanusiaan: kasih, solidaritas, dan keadilan.</li>
-    <li>Mendorong perubahan sistemik melalui advokasi dan pendidikan.</li>
-    <li>Menginspirasi generasi muda dalam karya kemanusiaan.</li>
-  </ul>
-
-  <div class="ayat old-book">
-  “Beginilah firman TUHAN semesta alam:
-  Laksanakanlah hukum dengan benar,
-  dan tunjukkanlah kasih setia serta belas kasihan
-  seorang terhadap yang lain.”  
-  <br><br>
-  <b><i>(Zakharia 7:9)</i></b>
-</div>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Lembaga Bantuan Hukum AHAVAH PRO DEO</h1>
+    <p>
+      Mewujudkan dunia yang adil, penuh kasih, dan bermartabat bagi setiap manusia tanpa diskriminasi.
+    </p>
   </div>
-</section>
 
-<!-- VERIFIKASI -->
-<section style="text-align:center;">
-  <a href="verify.html?id=AHV-001" class="btn">
-    VERIFIKASI KEANGGOTAAN
-  </a>
-</section>
+  <!-- SECTION -->
+  <div class="section">
+    <h2>Tentang Kami</h2>
+    <p>
+      Lembaga Bantuan Hukum AHAVAH PRO DEO adalah lembaga kemanusiaan dan bantuan hukum
+      yang berkomitmen membela hak-hak dasar manusia, memberikan pendampingan hukum,
+      serta mendorong keadilan sosial di Indonesia, khususnya Kalimantan Barat.
+    </p>
+  </div>
 
-<footer>
-  © 2026 Lembaga Bantuan Hukum AHAVAH PRO DEO<br>
-  Kalimantan Barat – Indonesia
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Lembaga Bantuan Hukum AHAVAH PRO DEO<br>
+    Kalimantan Barat, Indonesia
+  </footer>
 
 </body>
 </html>
