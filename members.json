@@ -1,0 +1,16 @@
+[
+  {
+    "id": "AHV-001",
+    "nama": "Nama Anggota",
+    "nomor": "AHV-001",
+    "status": "Advokat",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  },
+  {
+    "id": "AHV-002",
+    "nama": "Nama Relawan",
+    "nomor": "AHV-002",
+    "status": "Relawan",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  }
+]
