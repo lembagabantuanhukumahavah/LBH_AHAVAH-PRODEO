@@ -53,49 +53,68 @@
 
     /* KONTEN */
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 50px auto;
       padding: 20px;
+      position: relative;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
-    .visi-misi {
-      display: flex;
+    /* LAYOUT VISI MISI */
+    .visi-misi-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 30px;
-      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
     }
 
     .box {
-      flex: 1;
       background: #f9f9f9;
       border-left: 6px solid #ffd700;
-      padding: 20px;
+      padding: 25px;
       border-radius: 6px;
+      z-index: 2;
     }
 
-    .center-symbol {
+    .box h2 {
+      margin-top: 0;
+    }
+
+    /* GAMBAR TENGAH */
+    .center-image {
+      position: relative;
       text-align: center;
-      margin: 40px 0;
     }
 
-    .center-symbol img {
-      max-width: 220px;
-      margin: 10px;
+    .center-image img.map {
+      width: 100%;
+      max-width: 300px;
+      opacity: 0.25; /* transparan */
     }
 
-    /* AYAT ALKITAB - OLD BOOK STYLE */
+    .center-image img.dove {
+      width: 90px;
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* AYAT ALKITAB */
     .ayat {
-      margin-top: 50px;
+      margin-top: 70px;
       text-align: center;
       font-family: "Times New Roman", Georgia, serif;
       font-size: 22px;
       font-style: italic;
       font-weight: bold;
       color: #3b2f1b;
+      line-height: 1.6;
     }
 
     footer {
@@ -105,6 +124,17 @@
       padding: 20px;
       margin-top: 60px;
       font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .visi-misi-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .center-image img.map {
+        max-width: 220px;
+      }
     }
   </style>
 </head>
@@ -131,7 +161,9 @@
 <div class="container">
   <h1>Visi & Misi Lembaga</h1>
 
-  <div class="visi-misi">
+  <div class="visi-misi-wrapper">
+
+    <!-- VISI -->
     <div class="box">
       <h2>Visi</h2>
       <p>
@@ -140,28 +172,35 @@
       </p>
     </div>
 
+    <!-- GAMBAR TENGAH -->
+    <div class="center-image">
+      <img src="assets/merpati.jpg" alt="Merpati Damai" class="dove">
+      <img src="assets/peta-kalimantan-barat.jpg" alt="Peta Kalimantan Barat" class="map">
+    </div>
+
+    <!-- MISI -->
     <div class="box">
       <h2>Misi</h2>
       <ol>
-        <li>Membela hak-hak dasar setiap manusia.</li>
-        <li>Memberikan bantuan kemanusiaan yang cepat dan berkelanjutan.</li>
-        <li>Membangun kesadaran nilai kasih, keadilan, dan solidaritas.</li>
+        <li>Membela hak-hak dasar setiap manusia, khususnya yang tertindas.</li>
+        <li>Memberikan bantuan kemanusiaan secara cepat, tepat, dan berkelanjutan.</li>
+        <li>Membangun kesadaran nilai kasih, solidaritas, dan keadilan.</li>
         <li>Mendorong perubahan sistemik melalui advokasi dan pendidikan.</li>
-        <li>Menginspirasi generasi muda dalam karya kemanusiaan.</li>
+        <li>Menginspirasi generasi muda untuk terlibat dalam karya kemanusiaan.</li>
       </ol>
     </div>
+
   </div>
 
-  <!-- GAMBAR TENGAH -->
-  <div class="center-symbol">
-    <img src="assets/peta-kalimantan-barat.jpg" alt="Peta Kalimantan Barat">
-    <img src="assets/merpati.jpg" alt="Merpati Damai">
-  </div>
-
-  <!-- AYAT -->
+  <!-- AYAT ALKITAB -->
   <div class="ayat">
-    “Zakharia 7:9 — Lakukanlah hukum dengan benar”
+    “Beginilah firman TUHAN semesta alam:  
+    Laksanakanlah hukum yang benar,  
+    tunjukkanlah kasih setia dan belas kasihan  
+    seorang kepada yang lain.”  
+    <br>— <strong><em>Zakharia 7:9</em></strong>
   </div>
+
 </div>
 
 <footer>
