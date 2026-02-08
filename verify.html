@@ -10,6 +10,7 @@ body{
   margin:0;
   font-family: Helvetica, Arial, sans-serif;
   background:#f4f4f4;
+  color:#000;
 }
 
 header{
@@ -31,7 +32,7 @@ header img{
   margin:50px auto;
   padding:30px;
   border-top:6px solid #ffd700;
-  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  box-shadow:0 0 10px rgba(0,0,0,0.15);
 }
 
 .label{
@@ -39,13 +40,21 @@ header img{
   margin-top:15px;
 }
 
-.status{
+.value{
+  margin-top:5px;
+}
+
+.status-valid{
+  color:green;
   font-weight:bold;
   font-size:18px;
 }
 
-.valid{ color:green; }
-.invalid{ color:red; }
+.status-invalid{
+  color:red;
+  font-weight:bold;
+  font-size:18px;
+}
 
 footer{
   text-align:center;
@@ -59,9 +68,9 @@ footer{
 <body>
 
 <header>
-  <img src="assets/logo-ahavah.jpg">
+  <img src="assets/logo-ahavah.jpg" alt="Logo LBH AHAVAH PRO DEO">
   <h2>Lembaga Bantuan Hukum AHAVAH PRO DEO</h2>
-  <p>Halaman Verifikasi Anggota Resmi</p>
+  <p>Halaman Verifikasi Keanggotaan Resmi</p>
 </header>
 
 <div class="card" id="result">
@@ -69,37 +78,41 @@ footer{
 </div>
 
 <footer>
-  © 2026 LBH AHAVAH PRO DEO
+  © 2026 Lembaga Bantuan Hukum AHAVAH PRO DEO
 </footer>
 
 <script>
-// ambil parameter ID dari URL
+// Ambil parameter ID dari URL
 const params = new URLSearchParams(window.location.search);
 const memberId = params.get("id");
+const result = document.getElementById("result");
 
-// tampilkan jika ID tidak ada
 if(!memberId){
-  document.getElementById("result").innerHTML =
-    "<p class='invalid'><strong>ID anggota tidak ditemukan.</strong></p>";
+  result.innerHTML = `
+    <div class="status-invalid">ID Anggota tidak ditemukan</div>
+  `;
 }else{
   fetch("members.json")
-    .then(res => res.json())
+    .then(response => response.json())
     .then(data => {
-      const member = data.find(m => m.id === memberId);
+      const member = data.find(item => item.id === memberId);
 
       if(member){
-        document.getElementById("result").innerHTML = `
+        result.innerHTML = `
           <div class="label">Nama Anggota:</div>
-          <div>${member.nama}</div>
+          <div class="value">${member.nama}</div>
 
           <div class="label">Lembaga:</div>
-          <div>${member.lembaga}</div>
+          <div class="value">${member.lembaga}</div>
 
           <div class="label">Nomor Anggota:</div>
-          <div>${member.nomor}</div>
+          <div class="value">${member.nomor}</div>
 
-          <div class="label">Status:</div>
-          <div class="status valid">${member.status} – TERDAFTAR RESMI</div>
+          <div class="label">Status Keanggotaan:</div>
+          <div class="value"><strong>${member.status}</strong></div>
+
+          <div class="label">Status Verifikasi:</div>
+          <div class="status-valid">TERDAFTAR RESMI</div>
 
           <div class="label">Keterangan Verifikasi:</div>
           <p>
@@ -108,9 +121,15 @@ if(!memberId){
           </p>
         `;
       }else{
-        document.getElementById("result").innerHTML =
-          "<p class='invalid'><strong>DATA TIDAK TERDAFTAR</strong></p>";
+        result.innerHTML = `
+          <div class="status-invalid">DATA TIDAK TERDAFTAR</div>
+        `;
       }
+    })
+    .catch(() => {
+      result.innerHTML = `
+        <div class="status-invalid">Gagal memuat data verifikasi</div>
+      `;
     });
 }
 </script>
