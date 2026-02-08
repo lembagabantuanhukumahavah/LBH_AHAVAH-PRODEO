@@ -1,16 +1,58 @@
 [
   {
     "id": "AHV-001",
-    "nama": "Nama Anggota",
+    "nama": "DENNY NAFI",
     "nomor": "AHV-001",
-    "status": "Advokat",
+    "status": "Ketua Umum",
     "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
   },
   {
     "id": "AHV-002",
-    "nama": "Nama Relawan",
+    "nama": "RIEKY",
     "nomor": "AHV-002",
+    "status": "Koordinator Aset",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  },
+   {
+    "id": "AHV-003",
+    "nama": "ADELINO AFONSO PEREIRA",
+    "nomor": "AHV-003",
     "status": "Relawan",
     "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
-  }
+   },
+  {
+    "id": "AHV-004",
+    "nama": "R. PURBA",
+    "nomor": "AHV-004",
+    "status": "Advokat/Pengacara",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  },
+  {
+    "id": "AHV-005",
+    "nama": "ROGANSIANO TARANG",
+    "nomor": "AHV-005",
+    "status": "Paralegal",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  },
+  {
+    "id": "AHV-006",
+    "nama": "KATHARINA",
+    "nomor": "AHV-006",
+    "status": "Paralegal",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  },
+  {
+    "id": "AHV-007",
+    "nama": "ENDY FEBRIANTO",
+    "nomor": "AHV-007",
+    "status": "Paralegal",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  },
+  {
+    "id": "AHV-008",
+    "nama": "ANDONI PRADELA",
+    "nomor": "AHV-008",
+    "status": "Paralegal",
+    "lembaga": "Lembaga Bantuan Hukum AHAVAH PRO DEO"
+  },
 ]
